@@ -6,6 +6,18 @@ function toggleMenu() {
   showClose.classList.toggle('show-close');
 }
 
+window.onscroll = function() {scrollFunction()};
+
+console.log(document.getElementsByTagName("header"))
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.querySelector("header").classList.add("sticky");
+  } else {
+    document.querySelector("header").classList.remove("sticky");
+  }
+}
+
 // Probando evento resize
 // window.addEventListener('resize', function () {
 //   const menuReferencia = document.getElementById('menu-links');

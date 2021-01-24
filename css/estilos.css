@@ -10,14 +10,26 @@ body {
 }
 
 header {
-  height: 95px;
+  position: fixed;
+  top: 0px;
+  left: 0;
+
   width: 100%;
-  border-top: 5px solid #572ee5;
+  height: 95px;
+
   padding: 29px 22px 17px 22px;
+
+  z-index: 10;
+  border-top: 5px solid #572ee5;
   margin-bottom: 7px;
   background-color: white;
-  position: fixed;
-  z-index: 10;
+
+  transition: all 0.3s;
+  /* box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55); */
+}
+
+header.sticky {
+  /* height: 90px; */
   box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55);
 }
 
@@ -97,9 +109,7 @@ header nav .menu-toggle.show-close {
 
 /* MAIN */
 main {
-  position: relative;
-  /* top: 100px; */
-  padding-top: 100px;
+  padding-top: 102px;
 }
 
 /* SECCTION SEARCH  */
@@ -433,9 +443,13 @@ footer .legal p {
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   header {
-    position: relative;
     padding: 18px 156px 13px 156px;
     margin-bottom: 11px;
+  }
+
+  header.sticky {
+    height: 90px;
+    box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55);
   }
 
   header nav {
@@ -478,6 +492,8 @@ footer .legal p {
   header nav ul.menu li a {
     height: 22px;
     color: #572ee5;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
   }
 
   header nav ul li a:hover,
@@ -490,8 +506,7 @@ footer .legal p {
   }
 
   main {
-    /* top: 0px; */
-    padding-top: 0px;
+    padding-top: 102px;
   }
 
   section.search-gif-container h1 {
