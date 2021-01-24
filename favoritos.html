@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gifos App | Favoritos</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./css/estilos.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- Logo -->
+        <div class="logo-container" >
+            <a href="index.html"><img class="logo-mobile" src="./assets/images/logo-mobile.svg" alt="Gifos" /></a>
+            <a href="index.html"><img class="logo-desktop" src="./assets/images/logo-desktop.svg" alt="Gifos" /></a>
+          </div>
+
+        <!-- Menu Desktop -->
+        <ul id="menu-links" class="menu">
+          <li><a href="#">Modo Nocturno</a></li>
+          <li><a href="favoritos.html">Favoritos</a></li>
+          <li><a href="mis-gifos.html">Mis GIFOS</a></li>
+        </ul>
+
+        <!-- Menu hamburgesa Mobile -->
+        <div class="menu-toggle" onclick="toggleMenu()"></div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="layout-gif-container">
+        <div class="title">
+            <div class="icon">
+                <img src="./assets/images/icon-favoritos.svg" alt="Gifos" />
+              </div>
+            <h2>Favoritos</h2>
+        </div>
+        
+
+        <div class="layout-gif-gallery">
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/5a3T9ysziVB1gOzEfc/source.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/FVCM2k7kaSD1gDYMDg/giphy.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/l44Qy0U7ptmzriOyY/giphy.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/Zsc4dATQgcBmU/giphy.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/Zsc4dATQgcBmU/source.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/xreOZC8DSOKfvodM5b/giphy.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/I7sXL3kc7Qkog/source.gif" alt="Gifos" />
+          </div>
+
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/Kc2lui9u16pynAh5Ik/giphy.gif" alt="Gifos" />
+          </div>
+          <div class="gif-item">
+            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="Gifos" />
+          </div>
+        </div>
+
+        <div class="layout-gif-view-more">
+          <button>Ver Más</button>
+        </div>
+      </section>
+
+      <section class="trending-gif">
+        <h2>Trending GIFOS</h2>
+
+        <div class="trending-texts">
+          <p>Mira los últimos</p>
+          <p>GIFOS de nuestra comunidad.</p>
+        </div>
+
+        <div class="gallery-scroll-results">
+          <div class="gallery-item">
+            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="social-media">
+        <h4>Compartir en:</h4>
+        <div class="social-media-icons">
+          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+            <span class="icon-facebook"></span>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noreferrer">
+            <span class="icon-twitter"></span>
+          </a>
+          <a href="https://icon_instagram.com" target="_blank" rel="noreferrer">
+            <span class="icon-icon_instagram"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="legal">
+        <p>© GIFOS 2020 All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
