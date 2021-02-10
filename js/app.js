@@ -23,6 +23,11 @@ const verMasBtn = document.getElementById('ver-mas-btn');
 // Click Info Image
 const listaImages = document.getElementById('search-results-api');
 
+// TRENDING
+let offsetSelector = 0;
+let leftButton = document.getElementById('buttonLeft');
+let rightButton = document.getElementById('buttonRight');
+
 /***************************************************************************/
 /* SET THEME */
 /***************************************************************************/
@@ -265,6 +270,84 @@ const showSuggestions = () => {
 /***************************************************************************/
 /* FIN Suggestions API */
 /***************************************************************************/
+
+// SHOW TRENDING
+const showTrending = (offset) => {
+  console.log(offset);
+  // trending(3, offsetSelector).then((resp) => {
+  if (offset >= 0) {
+    trending(3, offset).then((resp) => {
+      const result = resp.data;
+      // console.log(result);
+      const galleryTrending = document.getElementById('gallery-trending');
+      galleryTrending.textContent = '';
+
+      if (result.length > 0) {
+        result.map((item) => {
+          return (galleryTrending.innerHTML += `
+          <div class="gallery-item">
+            <img class="img-item-share" src="${item.images.preview_gif.url}" alt="${item.title}" />
+  
+            <div class="gallery-items-share">
+              <div class="share-icons">
+                <img class="icon-favorite" alt="" />
+                <img class="icon-download" alt="" />
+                <img class="icon-maximize" alt="" />
+              </div>
+  
+              <div class="share-text">
+                <h5>${item.user === undefined ? 'Usuario Desconocido' : item.user.display_name}</h5>
+                <h3>${item.title}</h3>
+              </div>
+            </div>
+            </div>
+          `);
+        });
+
+        // if (offsetSelector === 3) {
+        //   leftButton.classList.add('active');
+        //   leftButton.addEventListener('click', slideToLeft);
+        // } else if (offsetSelector === 0) {
+        //   leftButton.removeEventListener('click', slideToLeft);
+        //   leftButton.classList.remove('active');
+
+        //   rightButton.classList.add('active');
+        //   rightButton.addEventListener('click', slideToRight);
+        //   // rightButton.removeEventListener('click', slideToRight);
+        // }
+      }
+    });
+  }
+};
+
+const trending = async (limit, offset) => {
+  let urlBase = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${limit}&offset=${offset}`;
+  let response = await fetch(urlBase);
+  let results = await response.json();
+  return results;
+};
+
+showTrending(offsetSelector);
+
+const slideToLeft = () => {
+  Math.sign(offsetSelector);
+  // console.log(Math.sign(offsetSelector));
+  // if (offsetSelector > 0)
+  if (Math.sign(offsetSelector) > 0) {
+    offsetSelector -= 3;
+    showTrending(offsetSelector);
+  } else {
+    offsetSelector = 0;
+  }
+};
+
+const slideToRight = () => {
+  offsetSelector += 3;
+  showTrending(offsetSelector);
+};
+
+leftButton.addEventListener('click', slideToLeft);
+rightButton.addEventListener('click', slideToRight);
 
 /***************************************************************************/
 /* Clear Search */

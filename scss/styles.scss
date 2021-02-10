@@ -567,14 +567,14 @@ section.trending-gif {
             font-weight: 400;
             font-size: 15px;
             color: #ffffff;
-            text-align: center;
+            text-align: left;
           }
           h3 {
             font-family: 'Roboto', sans-serif;
             font-weight: bold;
             font-size: 16px;
             color: #ffffff;
-            text-align: center;
+            text-align: left;
           }
         }
       }
@@ -951,8 +951,12 @@ footer {
           background-image: url(../assets/images/button-slider-left-hover.svg);
         }
 
+        &:active{
+          background-image: url(../assets/images/button-slider-left-hover.svg);
+        }
+
         body.darkTheme & {
-          background: url('../assets/images/button-slider-left-md-noct.svg');
+          background: url(../assets/images/button-slider-left-md-noct.svg);
 
           &:hover {
             cursor: pointer;
@@ -970,6 +974,10 @@ footer {
         transition: all 0.3s ease-out;
         &:hover {
           cursor: pointer;
+          background-image: url(../assets/images/Button-Slider-right-hover.svg);
+        }
+
+        &:active{
           background-image: url(../assets/images/Button-Slider-right-hover.svg);
         }
 
