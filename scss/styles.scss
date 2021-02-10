@@ -946,14 +946,14 @@ footer {
         background-repeat: no-repeat;
         margin-right: 22px;
         transition: all 0.3s ease-out;
-        &:hover {
+        &:hover, &.active {
           cursor: pointer;
           background-image: url(../assets/images/button-slider-left-hover.svg);
         }
 
-        &:active{
-          background-image: url(../assets/images/button-slider-left-hover.svg);
-        }
+        // &:active {
+        //   background-image: url(../assets/images/button-slider-left-hover.svg);
+        // }
 
         body.darkTheme & {
           background: url(../assets/images/button-slider-left-md-noct.svg);
@@ -972,14 +972,14 @@ footer {
         background-repeat: no-repeat;
         margin-left: 22px;
         transition: all 0.3s ease-out;
-        &:hover {
+        &:hover, &.active {
           cursor: pointer;
           background-image: url(../assets/images/Button-Slider-right-hover.svg);
         }
 
-        &:active{
-          background-image: url(../assets/images/Button-Slider-right-hover.svg);
-        }
+        // &:active {
+        //   background-image: url(../assets/images/Button-Slider-right-hover.svg);
+        // }
 
         body.darkTheme & {
           background: url('../assets/images/button-slider-right-md-noct.svg');

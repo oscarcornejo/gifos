@@ -28,6 +28,10 @@ let offsetSelector = 0;
 let leftButton = document.getElementById('buttonLeft');
 let rightButton = document.getElementById('buttonRight');
 
+if (offsetSelector === 0) {
+  leftButton.style.display = 'none';
+}
+
 /***************************************************************************/
 /* SET THEME */
 /***************************************************************************/
@@ -273,7 +277,6 @@ const showSuggestions = () => {
 
 // SHOW TRENDING
 const showTrending = (offset) => {
-  console.log(offset);
   // trending(3, offsetSelector).then((resp) => {
   if (offset >= 0) {
     trending(3, offset).then((resp) => {
@@ -303,18 +306,6 @@ const showTrending = (offset) => {
             </div>
           `);
         });
-
-        // if (offsetSelector === 3) {
-        //   leftButton.classList.add('active');
-        //   leftButton.addEventListener('click', slideToLeft);
-        // } else if (offsetSelector === 0) {
-        //   leftButton.removeEventListener('click', slideToLeft);
-        //   leftButton.classList.remove('active');
-
-        //   rightButton.classList.add('active');
-        //   rightButton.addEventListener('click', slideToRight);
-        //   // rightButton.removeEventListener('click', slideToRight);
-        // }
       }
     });
   }
@@ -333,17 +324,29 @@ const slideToLeft = () => {
   Math.sign(offsetSelector);
   // console.log(Math.sign(offsetSelector));
   // if (offsetSelector > 0)
+  // console.log(offsetSelector);
+
+  if (offsetSelector <= 3) {
+    leftButton.style.display = 'none';
+  }
+
   if (Math.sign(offsetSelector) > 0) {
+    rightButton.classList.remove('active');
     offsetSelector -= 3;
     showTrending(offsetSelector);
+    leftButton.classList.add('active');
   } else {
     offsetSelector = 0;
+    leftButton.style.display = 'none';
   }
 };
 
 const slideToRight = () => {
+  leftButton.style.display = 'block';
+  leftButton.classList.remove('active');
   offsetSelector += 3;
   showTrending(offsetSelector);
+  rightButton.classList.add('active');
 };
 
 leftButton.addEventListener('click', slideToLeft);
