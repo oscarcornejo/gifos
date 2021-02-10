@@ -253,10 +253,12 @@ section.search-gif-container {
 
       .search-gif-suggestions {
         hr {
+          display: none;
           margin: 0;
           margin-top: 10px;
         }
         ul {
+          display: none;
           list-style-type: none;
           text-align: left;
           padding: 0;
@@ -277,6 +279,10 @@ section.search-gif-container {
                 color: #838383;
               }
             }
+          }
+
+          &.open-suggestions {
+            display: block;
           }
         }
       }
@@ -742,6 +748,9 @@ footer {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  /***************************************/
+  /* HEADER */
+  /***************************************/
   header {
     padding: 18px 156px 13px 156px;
     margin-bottom: 11px;
@@ -805,10 +814,16 @@ footer {
     }
   }
 
+  /***************************************/
+  /* MAIN */
+  /***************************************/
   main {
     padding-top: 102px;
   }
 
+  /***************************************/
+  /* SECCTION SEARCH  */
+  /***************************************/
   section.search-gif-container {
     margin-bottom: 90px;
 
@@ -874,10 +889,9 @@ footer {
     }
   }
 
-  //   header nav ul.menu li body.darkTheme nav ul.menu li a {
-  //     color: #fff;
-  //   }
-
+  /**********************************************************/
+  /* SECCTION GIF / PARA PáGINAS FAVORITOS y MIS GIFOS  */
+  /**********************************************************/
   section.layout-gif-container {
     padding: 10px 156px 78px 156px;
 
@@ -901,7 +915,9 @@ footer {
     }
   }
 
-  /* TRENDING */
+  /***************************************/
+  /* SECCTION TRENDING  */
+  /***************************************/
   section.trending-gif {
     padding-top: 78px;
 
@@ -989,6 +1005,9 @@ footer {
     }
   }
 
+  /***************************************/
+  /* SECCIÓN FOOTER  */
+  /***************************************/
   footer {
     height: 121px;
     padding: 0 156px;
