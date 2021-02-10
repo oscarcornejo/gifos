@@ -7,11 +7,11 @@
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
-body.darkTheme{
-  background-color: #37383C;
+body.darkTheme {
+  background-color: #37383c;
 }
 
 header {
@@ -33,8 +33,8 @@ header {
   /* box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55); */
 }
 
-body.darkTheme header{
-  background-color: #37383C;
+body.darkTheme header {
+  background-color: #37383c;
   border-top: 5px solid #000;
 }
 
@@ -95,8 +95,6 @@ header nav ul.menu li a {
   text-decoration: none;
 }
 
-
-
 header nav ul.menu li::after {
   content: '';
   width: 41px;
@@ -139,7 +137,7 @@ section.search-gif-container h1 {
   margin-bottom: 31px;
 }
 
-body.darkTheme  section.search-gif-container h1 {
+body.darkTheme section.search-gif-container h1 {
   color: #fff;
 }
 
@@ -177,8 +175,6 @@ body.darkTheme section.search-gif-container .search-gif-box .search-gif-input {
   border: 1px solid #fff;
 }
 
-
-
 section.search-gif-container .search-gif-box .search-gif-input input {
   border: none;
   color: #000;
@@ -196,7 +192,6 @@ section.search-gif-container .search-gif-box .search-gif-input input::placeholde
 body.darkTheme section.search-gif-container .search-gif-box .search-gif-input input::placeholder {
   color: white;
 }
-
 
 section.search-gif-container .search-gif-box .search-gif-input input:focus {
   outline: none;
@@ -233,7 +228,7 @@ section.search-gif-container .search-gif-box .search-gif-text p {
   line-height: 25px;
 }
 
-body.darkTheme section.search-gif-container .search-gif-box .search-gif-text p  {
+body.darkTheme section.search-gif-container .search-gif-box .search-gif-text p {
   color: #fff;
 }
 
@@ -311,8 +306,6 @@ section.trending-gif {
 body.darkTheme section.trending-gif {
   background-color: #222326;
 }
-
-
 
 section.trending-gif h2 {
   font-weight: 700;
@@ -598,13 +591,19 @@ body.darkTheme footer .legal p {
     padding-top: 102px;
   }
 
+  section.search-gif-container {
+    padding-bottom: 95px;
+  }
+
+  section.search-gif-container .search-gif-box .search-gif-text {
+    width: 100%;
+  }
+
   section.search-gif-container h1 {
     width: 55%;
     margin: auto;
     margin-bottom: 27px;
   }
-
-  
 
   section.search-gif-container .search-gif-box {
     width: 55%;
@@ -617,6 +616,7 @@ body.darkTheme footer .legal p {
 
   section.search-results {
     padding: 43px 156px 79px 156px;
+    display: none;
   }
   section.search-results .search-gallery-results .gallery-result-item {
     width: 100%;
@@ -648,6 +648,12 @@ body.darkTheme footer .legal p {
     width: 100%;
     height: 200px;
     object-fit: cover;
+  }
+
+  /* TRENDING */
+
+  section.trending-gif {
+    padding-top: 67px;
   }
 }
 

@@ -8,15 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="./css/estilos.css" />
+    <!-- <link rel="stylesheet" href="./css/estilos.css" /> -->
+    <link rel="stylesheet" type="text/css" href="./css/styles.min.css" />
   </head>
   <body>
     <header>
       <nav>
         <!-- Logo -->
         <div class="logo-container">
-          <a href="index.html"><img class="logo-mobile" src="./assets/images/logo-mobile.svg" alt="Gifos" /></a>
-          <a href="index.html"><img class="logo-desktop" src="./assets/images/logo-desktop.svg" alt="Gifos" /></a>
+          <!-- <a href="index.html"><img  src="./assets/images/logo-mobile.svg" alt="Gifos" /></a>
+          <a href="index.html"><img  src="./assets/images/logo-desktop.svg" alt="Gifos" /></a> -->
+
+          <a href="index.html"><span class="logo-mobile"></span></a>
+          <a href="index.html"><span class="logo-desktop"></span></a>
         </div>
 
         <!-- Menu Desktop -->
@@ -35,71 +39,51 @@
       <section class="search-gif-container">
         <h1>Inspírate, busca, guarda, y crea los mejores <span class="brand-app">GIFOS</span></h1>
 
-        <di v class="search-gif-box">
+        <div class="search-gif-box">
           <div class="search-gif-img">
             <img src="./assets/images/ilustra_header.svg" alt="gifos" />
           </div>
 
-          <div class="search-gif-input">
-            <input id="search-input" type="text" placeholder="Busca GIFOS y más..." />
-            <img src="./assets/images/icon-search.svg" alt="gifos" />
+          <div class="search-gif-content">
+            <div class="search-gif-input">
+              <input id="search-input" type="text" placeholder="Busca GIFOS y más..." />
+              <!-- <img id="img-search-btn" src="./assets/images/icon-search.svg" alt="gifos" /> -->
+              <span id="btn-search" class="boton-search"></span>
+            </div>
+
+            <div class="search-gif-suggestions">
+              <hr />
+              <ul id="list-suggestions">
+                <li>
+                  <span>Sugerencia 1</span>
+                </li>
+                <li>
+                  <span>Sugerencia 2</span>
+                </li>
+                <li>
+                  <span>Sugerencia 3</span>
+                </li>
+                <li>
+                  <span>Sugerencia 4</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div class="search-gif-text">
             <h2>Trending:</h2>
             <p>Reactions, Entertainment, Sports, Stickers, Artists</p>
           </div>
-        </di>
-      </section>
-
-      <div class="divider"></div>
-
-      <section class="search-results">
-        <h2>Mascotas</h2>
-
-        <div class="search-gallery-results">
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/5a3T9ysziVB1gOzEfc/source.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/FVCM2k7kaSD1gDYMDg/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/l44Qy0U7ptmzriOyY/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/Zsc4dATQgcBmU/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/Zsc4dATQgcBmU/source.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/xreOZC8DSOKfvodM5b/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/I7sXL3kc7Qkog/source.gif" alt="Gifos" />
-          </div>
-
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/Kc2lui9u16pynAh5Ik/giphy.gif" alt="Gifos" />
-          </div>
-          <div class="gallery-result-item">
-            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="Gifos" />
-          </div>
         </div>
 
-        <div class="search-results-view-more">
-          <button>Ver Más</button>
+        <div class="divider"></div>
+
+        <div class="search-results">
+          <h2 id="title-result"></h2>
+          <div id="search-results-api" class="search-gallery-results"></div>
+          <div class="search-results-view-more">
+            <button id="ver-mas-btn">Ver Más</button>
+          </div>
         </div>
       </section>
 
@@ -107,34 +91,68 @@
         <h2>Trending GIFOS</h2>
 
         <div class="trending-texts">
-          <p>Mira los últimos</p>
-          <p>GIFOS de nuestra comunidad.</p>
+          <p>Mira los últimos GIFOS de nuestra comunidad.</p>
         </div>
 
-        <div class="gallery-scroll-results">
-          <div class="gallery-item">
-            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
+        <div class="trending-gif-results">
+          <!-- <img id="buttonLeft" class="btn-left-slider" alt="trending-gif" src="./assets/images/button-slider-left.svg" /> -->
+          <span class="btn-left-slider"></span>
+
+          <div class="gallery-scroll-results">
+            <div class="gallery-item">
+              <img class="img-item-share" src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
+
+              <div class="gallery-items-share">
+                <div class="share-icons">
+                  <img class="icon-favorite" alt="" />
+                  <img class="icon-download" alt="" />
+                  <img class="icon-maximize" alt="" />
+                </div>
+
+                <div class="share-text">
+                  <h5>User</h5>
+                  <h3>Título GIFO</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img class="img-item-share" src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
+
+              <div class="gallery-items-share">
+                <div class="share-icons">
+                  <img class="icon-favorite" alt="" />
+                  <img class="icon-download" alt="" />
+                  <img class="icon-maximize" alt="" />
+                </div>
+
+                <div class="share-text">
+                  <h5>User</h5>
+                  <h3>Título GIFO</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <img class="img-item-share" src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
+
+              <div class="gallery-items-share">
+                <div class="share-icons">
+                  <img class="icon-favorite" alt="" />
+                  <img class="icon-download" alt="" />
+                  <img class="icon-maximize" alt="" />
+                </div>
+
+                <div class="share-text">
+                  <h5>User</h5>
+                  <h3>Título GIFO</h3>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="gallery-item">
-            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
-          </div>
-
-          <div class="gallery-item">
-            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
-          </div>
+          <!-- <img id="buttonRight" class="btn-right-slider active" alt="trending-gif" src="./assets/images/Button-Slider-right.svg" /> -->
+          <span class="btn-right-slider"></span>
         </div>
       </section>
     </main>
