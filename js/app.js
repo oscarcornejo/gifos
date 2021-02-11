@@ -29,7 +29,7 @@ let leftButton = document.getElementById('buttonLeft');
 let rightButton = document.getElementById('buttonRight');
 
 if (offsetSelector === 0) {
-  leftButton.style.display = 'none';
+  leftButton.style.visibility = 'hidden';
 }
 
 /***************************************************************************/
@@ -327,7 +327,7 @@ const slideToLeft = () => {
   // console.log(offsetSelector);
 
   if (offsetSelector <= 3) {
-    leftButton.style.display = 'none';
+    leftButton.style.visibility = 'hidden';
   }
 
   if (Math.sign(offsetSelector) > 0) {
@@ -337,12 +337,12 @@ const slideToLeft = () => {
     leftButton.classList.add('active');
   } else {
     offsetSelector = 0;
-    leftButton.style.display = 'none';
+    leftButton.style.visibility = 'hidden';
   }
 };
 
 const slideToRight = () => {
-  leftButton.style.display = 'block';
+  leftButton.style.visibility = 'visible';
   leftButton.classList.remove('active');
   offsetSelector += 3;
   showTrending(offsetSelector);
