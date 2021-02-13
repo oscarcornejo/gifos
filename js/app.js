@@ -4,27 +4,27 @@
 const API_KEY = 'Ii4G7TeTlLIx8f8fLOK8HKMdwflwMbUK';
 const BASE_PATH = 'https://api.giphy.com/v1/gifs';
 
-// TOGGLE MENU
+// VARS TOGGLE MENU
 const toggleButton = document.getElementById('toggleDarkMode');
 const menuReferencia = document.getElementById('menu-links');
 
-// SEARCH
+// VARS SEARCH
 const searchInput = document.getElementById('search-input');
 let terminoBusqueda = '';
 let nextPage = 0;
 
-// OPEN Suggestions
+// VARS OPEN Suggestions
 const openSuggestions = document.getElementById('list-suggestions');
 const openSuggestionsHr = document.querySelector('.search-gif-suggestions hr');
 const textBottomSearchInput = document.querySelector('.search-gif-text');
 
-// RESULTS
+// VARS RESULTS
 const verMasBtn = document.getElementById('ver-mas-btn');
 
-// Click Info Image
+// VARS Click Info Image
 const listaImages = document.getElementById('search-results-api');
 
-// TRENDING
+// VARS TRENDING
 let offsetSelector = 0;
 let leftButton = document.getElementById('buttonLeft');
 let rightButton = document.getElementById('buttonRight');
@@ -52,10 +52,10 @@ toggleButton.addEventListener('click', () => {
   document.body.classList.toggle('darkTheme');
   if (setTheme === 'lightTheme') {
     setTheme = 'darkTheme';
-    toggleButton.classList.add('active');
+    toggleButton.classList.remove('active');
   } else {
     setTheme = 'lightTheme';
-    toggleButton.classList.remove('active');
+    toggleButton.classList.add('active');
   }
   localStorage.setItem('themeMode', setTheme);
   // localStorage.removeItem('darkTheme');
@@ -65,6 +65,9 @@ toggleButton.addEventListener('click', () => {
 /* FIN SET THEME */
 /***************************************************************************/
 
+/***************************************************************************/
+/* MENÚ NAVEGACIÓN */
+/***************************************************************************/
 setNavigation();
 
 function setNavigation() {
@@ -81,11 +84,15 @@ function setNavigation() {
     // console.log(menuItem[index].href);
     if (menuItem[index].href === currentLocation) {
       menuItem[index].className = 'active';
-    } else if (menuItem[index].href === 'javascript:void(0)') {
-      menuItem[index].className = 'active';
     }
+    // else if (menuItem[index].href === 'javascript:void(0)') {
+    //   menuItem[index].className = 'active';
+    // }
   }
 }
+/***************************************************************************/
+/* FIN MENÚ NAVEGACIÓN */
+/***************************************************************************/
 
 /***************************************************************************/
 /* TOGGLE MENU */

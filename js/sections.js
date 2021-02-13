@@ -3,7 +3,6 @@ const API_KEY = 'Ii4G7TeTlLIx8f8fLOK8HKMdwflwMbUK';
 const BASE_PATH = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}`;
 
 const menuReferencia = document.getElementById('menu-links');
-
 const toggleButton = document.getElementById('toggleDarkMode');
 
 //  SET THEME
