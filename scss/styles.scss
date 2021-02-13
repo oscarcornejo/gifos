@@ -27,17 +27,13 @@ header {
   position: fixed;
   top: 0px;
   left: 0;
-
   width: 100%;
   height: 95px;
-
   padding: 29px 22px 17px 22px;
-
   z-index: 10;
   border-top: 5px solid #572ee5;
   margin-bottom: 7px;
   background-color: white;
-
   transition: all 0.3s;
   /* box-shadow: 0 2px 4px 1px rgba(156, 175, 195, 0.55); */
 
@@ -226,6 +222,19 @@ section.search-gif-container {
         align-items: center;
         width: 100%;
 
+        &.add-lupa {
+          &::before {
+            content: '';
+            width: 25px;
+            height: 25px;
+            background-image: url(../assets/images/icon-search-grey.svg);
+            display: inline-block;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+
         input {
           border: none;
           color: #000;
@@ -280,6 +289,17 @@ section.search-gif-container {
           li {
             margin: 5px auto;
             cursor: pointer;
+
+            &::before {
+              content: '';
+              width: 20px;
+              height: 20px;
+              background-image: url(../assets/images/icon-search-grey.svg);
+              display: inline-block;
+              background-repeat: no-repeat;
+              vertical-align: middle;
+              margin-right: 10px;
+            }
 
             span {
               text-decoration: none;
@@ -546,6 +566,7 @@ section.trending-gif {
           }
           .gallery-items-share {
             opacity: 1;
+            display: flex;
           }
         }
       }
@@ -563,7 +584,8 @@ section.trending-gif {
       }
 
       .gallery-items-share {
-        display: flex;
+        display: none;
+        opacity: 0;
         justify-content: space-between;
         align-items: flex-start;
         flex-direction: column;
@@ -572,7 +594,6 @@ section.trending-gif {
         // width: 100%;
         width: 250px;
         height: 100%;
-        opacity: 0;
         position: absolute;
         transition: 0.5s ease;
         top: 0px;

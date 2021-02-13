@@ -5,7 +5,9 @@ const API_KEY = 'Ii4G7TeTlLIx8f8fLOK8HKMdwflwMbUK';
 const BASE_PATH = 'https://api.giphy.com/v1/gifs';
 
 // VARS TOGGLE MENU
+const menuHamburgesa = document.getElementById('menu-hamburgesa');
 const toggleButton = document.getElementById('toggleDarkMode');
+const showClose = document.querySelector('.menu-toggle');
 const menuReferencia = document.getElementById('menu-links');
 
 // VARS SEARCH
@@ -17,6 +19,8 @@ let nextPage = 0;
 const openSuggestions = document.getElementById('list-suggestions');
 const openSuggestionsHr = document.querySelector('.search-gif-suggestions hr');
 const textBottomSearchInput = document.querySelector('.search-gif-text');
+const addLupa = document.querySelector('div .search-gif-input');
+const suggestionList = document.getElementById('list-suggestions');
 
 // VARS RESULTS
 const verMasBtn = document.getElementById('ver-mas-btn');
@@ -42,25 +46,20 @@ setTheme = setTheme ? setTheme : 'lightTheme';
 
 if (setTheme === 'darkTheme') {
   document.body.classList.toggle('darkTheme');
-  toggleButton.classList.add('active');
 } else {
   document.body.classList.remove('darkTheme');
-  toggleButton.classList.remove('active');
 }
 
 toggleButton.addEventListener('click', () => {
   document.body.classList.toggle('darkTheme');
   if (setTheme === 'lightTheme') {
     setTheme = 'darkTheme';
-    toggleButton.classList.remove('active');
   } else {
     setTheme = 'lightTheme';
-    toggleButton.classList.add('active');
   }
   localStorage.setItem('themeMode', setTheme);
   // localStorage.removeItem('darkTheme');
 });
-
 /***************************************************************************/
 /* FIN SET THEME */
 /***************************************************************************/
@@ -98,10 +97,11 @@ function setNavigation() {
 /* TOGGLE MENU */
 /***************************************************************************/
 function toggleMenu() {
-  const showClose = document.querySelector('.menu-toggle');
   menuReferencia.classList.toggle('showMenu');
   showClose.classList.toggle('show-close');
 }
+
+menuHamburgesa.addEventListener('click', toggleMenu);
 
 window.onscroll = function () {
   scrollFunction();
@@ -131,10 +131,9 @@ function scrollFunction() {
 /***************************************************************************/
 /* SEARCH */
 /***************************************************************************/
-searchInput.addEventListener('keyup', (e) => {
+searchInput.addEventListener('keyup', (event) => {
   terminoBusqueda = searchInput.value;
-  // console.log(terminoBusqueda);
-  if (e.code !== 'Enter') {
+  if (event.code !== 'Enter') {
     terminoBusqueda.length > 0 ? getApiSuggestions(terminoBusqueda) : clearSearch();
   }
 });
@@ -154,7 +153,9 @@ const searchBtn = document.getElementById('btn-search');
 searchBtn.addEventListener('click', async () => {
   if (terminoBusqueda.length > 0) {
     // nextPage++;
-    await getSearchApi(terminoBusqueda, nextPage);
+    // TODO: CAMBIAR LUPA POR ICONO X
+    // TODO: Limpiar Búsqueda
+    await clearSearch(terminoBusqueda, nextPage);
   }
 });
 
@@ -194,7 +195,7 @@ listaImages.addEventListener('click', (e) => {
 /* SEARCH API */
 /***************************************************************************/
 const getSearchApi = (termino, offset) => {
-  offset.toString();
+  // offset.toString();
 
   const title = document.getElementById('title-result');
   title.innerHTML = termino;
@@ -207,11 +208,13 @@ const getSearchApi = (termino, offset) => {
     .then((resp) => {
       // console.log(resp.data);
       const result = resp.data;
+      // TODO: SUBIR VARIABLES
       const boxResult = document.querySelector('.search-results');
+      const element = document.getElementById('search-results-api');
       boxResult.style.display = 'block';
       textBottomSearchInput.style.display = 'none';
 
-      const element = document.getElementById('search-results-api');
+      element.innerHTML = '';
 
       if (result.length > 0) {
         // OPCIÓN 1
@@ -263,32 +266,34 @@ const getSearchApi = (termino, offset) => {
 const getApiSuggestions = (termino) => {
   newSuggest(termino)
     .then((resp) => {
-      textBottomSearchInput.style.display = 'none';
-      const suggestionList = document.getElementById('list-suggestions');
-      suggestionList.textContent = '';
       const result = resp.data;
       // console.log(result);
+      textBottomSearchInput.style.display = 'none';
+      // Limpiar Sugerencias
+      suggestionList.textContent = '';
 
+      // Abrir Listado de Sugerencias
       openSuggestions.classList.add('open-suggestions');
+
+      // Muestro tag <hr>
       openSuggestionsHr.style.display = 'block';
 
-      if (result.length > 0) {
-        // result.map((item) => {
-        //   return (openSuggestions.innerHTML += `
-        //   <li>
-        //     <span>${item.name}</span>
-        //   </li>
-        // `);
-        // });
+      // ADD CLASS
+      addLupa.classList.add('add-lupa');
 
+      if (result.length > 0) {
         result.map((suggestedTerm) => {
+          // console.log('suggestedTerm:: ', suggestedTerm);
+
+          // CREA e INSETAR HTML
           let list = document.createElement('li');
           spanTextSuggestion = document.createElement('span');
           spanTextSuggestion.innerHTML = suggestedTerm.name;
           suggestionList.appendChild(list).appendChild(spanTextSuggestion);
+
+          // CLICK a la Sugerencia
           list.addEventListener('click', function () {
             terminoBusqueda = suggestedTerm.name;
-
             showSuggestions();
           });
           // iconSearchActive.removeEventListener('click', showSuggestions);
@@ -317,6 +322,7 @@ const showSuggestions = () => {
   clearSearch();
   searchInput.value = terminoBusqueda;
   searchInput.focus();
+  getSearchApi(searchInput.value, nextPage);
 };
 
 /***************************************************************************/
@@ -497,13 +503,13 @@ const slideToLeft = () => {
   // if (offsetSelector > 0)
   // console.log(offsetSelector);
 
-  if (offsetSelector <= 3) {
+  if (offsetSelector <= 1) {
     leftButton.style.visibility = 'hidden';
   }
 
   if (Math.sign(offsetSelector) > 0) {
     rightButton.classList.remove('active');
-    offsetSelector -= 3;
+    offsetSelector -= 1;
     showTrending(offsetSelector);
     leftButton.classList.add('active');
   } else {
@@ -515,7 +521,7 @@ const slideToLeft = () => {
 const slideToRight = () => {
   leftButton.style.visibility = 'visible';
   leftButton.classList.remove('active');
-  offsetSelector += 3;
+  offsetSelector += 1;
   showTrending(offsetSelector);
   rightButton.classList.add('active');
 };
@@ -534,6 +540,8 @@ const clearSearch = () => {
   openSuggestions.classList.remove('open-suggestions');
   openSuggestionsHr.style.display = 'none';
   textBottomSearchInput.style.display = 'block';
+  addLupa.classList.remove('add-lupa');
+  nextPage = 0;
 };
 /***************************************************************************/
 /* FIN Clear Search */
