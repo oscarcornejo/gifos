@@ -27,6 +27,7 @@ const listaImages = document.getElementById('search-results-api');
 let offsetSelector = 0;
 let leftButton = document.getElementById('buttonLeft');
 let rightButton = document.getElementById('buttonRight');
+const galleryTrending = document.getElementById('gallery-trending');
 
 if (offsetSelector === 0) {
   leftButton.style.visibility = 'hidden';
@@ -97,11 +98,23 @@ function scrollFunction() {
 /***************************************************************************/
 /* SEARCH */
 /***************************************************************************/
-searchInput.addEventListener('keyup', () => {
+searchInput.addEventListener('keyup', (e) => {
   terminoBusqueda = searchInput.value;
-  console.log(terminoBusqueda);
-  terminoBusqueda.length > 0 ? getApiSuggestions(terminoBusqueda) : clearSearch();
+  // console.log(terminoBusqueda);
+  if (e.code !== 'Enter') {
+    terminoBusqueda.length > 0 ? getApiSuggestions(terminoBusqueda) : clearSearch();
+  }
 });
+
+// ENTER EN INPUT
+searchInput.addEventListener('keypress', enterKey);
+function enterKey(e) {
+  // console.log(e.code);
+  if (e.code === 'Enter') {
+    terminoBusqueda = searchInput.value;
+    getSearchApi(terminoBusqueda, nextPage);
+  }
+}
 
 // GET RESULTADOS POR TÉRMINO DE BÚSQUEDA
 const searchBtn = document.getElementById('btn-search');
@@ -159,7 +172,7 @@ const getSearchApi = (termino, offset) => {
   fetch(API_URL)
     .then((data) => data.json())
     .then((resp) => {
-      console.log(resp.data);
+      // console.log(resp.data);
       const result = resp.data;
       const boxResult = document.querySelector('.search-results');
       boxResult.style.display = 'block';
@@ -221,7 +234,7 @@ const getApiSuggestions = (termino) => {
       const suggestionList = document.getElementById('list-suggestions');
       suggestionList.textContent = '';
       const result = resp.data;
-      console.log(result);
+      // console.log(result);
 
       openSuggestions.classList.add('open-suggestions');
       openSuggestionsHr.style.display = 'block';
@@ -242,6 +255,7 @@ const getApiSuggestions = (termino) => {
           suggestionList.appendChild(list).appendChild(spanTextSuggestion);
           list.addEventListener('click', function () {
             terminoBusqueda = suggestedTerm.name;
+
             showSuggestions();
           });
           // iconSearchActive.removeEventListener('click', showSuggestions);
@@ -269,20 +283,144 @@ async function newSuggest(term) {
 const showSuggestions = () => {
   clearSearch();
   searchInput.value = terminoBusqueda;
+  searchInput.focus();
 };
 
 /***************************************************************************/
 /* FIN Suggestions API */
 /***************************************************************************/
 
-// SHOW TRENDING
+/***************************************************************************/
+/* TRENDING */
+/***************************************************************************/
+// var touchstartX = 0;
+// var touchstartY = 0;
+// var touchendX = 0;
+// var touchendY = 0;
+
+// galleryTrending.addEventListener(
+//   'touchstart',
+//   function (event) {
+//     touchstartX = event.screenX;
+//     touchstartY = event.screenY;
+//   },
+//   false
+// );
+
+// galleryTrending.addEventListener(
+//   'touchend',
+//   function (event) {
+//     touchendX = event.screenX;
+//     touchendY = event.screenY;
+//     handleGesure();
+//   },
+//   false
+// );
+
+// function handleGesure() {
+//   var swiped = 'swiped: ';
+//   if (touchendX < touchstartX) {
+//     alert(swiped + 'left!');
+//   }
+//   if (touchendX > touchstartX) {
+//     alert(swiped + 'right!');
+//   }
+//   if (touchendY < touchstartY) {
+//     alert(swiped + 'down!');
+//   }
+//   if (touchendY > touchstartY) {
+//     alert(swiped + 'left!');
+//   }
+//   if (touchendY == touchstartY) {
+//     alert('tap!');
+//   }
+// }
+
+galleryTrending.addEventListener('touchstart', handleTouchStart, false);
+galleryTrending.addEventListener('touchmove', handleTouchMove, false);
+galleryTrending.addEventListener('scroll', handleScrollHorizontal, false);
+
+let xDown = null;
+let yDown = null;
+let sizeHorizontal = 0;
+
+function handleScrollHorizontal(e) {
+  sizeHorizontal = e.currentTarget.scrollLeft;
+  console.log(sizeHorizontal);
+}
+
+function getTouches(e) {
+  // console.log(e.touches);
+  return e.touches; // browser API
+}
+
+function handleTouchStart(e) {
+  // console.log(e);
+  const firstTouch = getTouches(e)[0];
+  // console.log(firstTouch);
+  xDown = firstTouch.clientX;
+  yDown = firstTouch.clientY;
+}
+
+function handleTouchMove(e) {
+  // console.log(e);
+  if (!xDown || !yDown) {
+    return;
+  }
+
+  var xUp = e.touches[0].clientX;
+  var yUp = e.touches[0].clientY;
+
+  var xDiff = xDown - xUp;
+  var yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    // console.log(window.innerWidth);
+    // console.log(window.outerWidth);
+    // console.log(galleryTrending.clientWidth);
+
+    /*most significant*/
+    if (xDiff > 15 && sizeHorizontal === 459) {
+      /* left swipe */
+      console.log('left swipe', xDiff);
+      console.log('size horizontal', sizeHorizontal);
+      slideToRight();
+    } else if (xDiff < -15 && sizeHorizontal === 0) {
+      console.log('right swipe', xDiff);
+      console.log('size horizontal', sizeHorizontal);
+      slideToLeft();
+    }
+
+    // else {
+    //   /* right swipe */
+    //   console.log('right swipe', xDiff);
+    //   // slideToLeft();
+    // }
+  }
+  // else {
+  //   if (yDiff > 0) {
+  //     /* up swipe */
+  //     console.log('up swipe');
+  //   } else {
+  //     /* down swipe */
+  //     console.log('down swipe');
+  //   }
+  // }
+  /* reset values */
+  xDown = null;
+  yDown = null;
+
+  e.preventDefault();
+}
+
+//
 const showTrending = (offset) => {
   // trending(3, offsetSelector).then((resp) => {
   if (offset >= 0) {
     trending(3, offset).then((resp) => {
       const result = resp.data;
       // console.log(result);
-      const galleryTrending = document.getElementById('gallery-trending');
+
       galleryTrending.textContent = '';
 
       if (result.length > 0) {
@@ -351,6 +489,9 @@ const slideToRight = () => {
 
 leftButton.addEventListener('click', slideToLeft);
 rightButton.addEventListener('click', slideToRight);
+/***************************************************************************/
+/* FIN TRENDING */
+/***************************************************************************/
 
 /***************************************************************************/
 /* Clear Search */

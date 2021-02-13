@@ -96,6 +96,10 @@ header {
         flex-direction: column;
         transition: all 0.3s;
 
+        body.darkTheme & {
+          background: rgba(0, 0, 0, 1);
+        }
+
         &.showMenu {
           display: flex;
         }
@@ -142,8 +146,17 @@ header {
       background-position: right;
       cursor: pointer;
 
+      body.darkTheme & {
+        background-image: url('../assets/images/burger-modo-noct.svg');
+      }
+
       &.show-close {
         background-image: url('../assets/images/close.svg');
+
+        body.darkTheme & {
+          background-image: url('../assets/images/Button-close-modo-noc.svg');
+          // background-image: url('../assets/images/Button-close-hover-modo-noc.svg');
+        }
       }
     }
   }
@@ -160,7 +173,7 @@ main {
 /* SECCTION SEARCH  */
 /***************************************/
 section.search-gif-container {
-  padding: 10px 20px 5px 20px;
+  padding: 10px 21px 5px 21px;
   margin-top: 60px;
   margin-bottom: 40px;
 
@@ -334,7 +347,7 @@ section.search-gif-container {
   /* SECCTION RESULTS  */
   /***************************************/
   .search-results {
-    padding: 43px 21px 79px 21px;
+    padding: 43px 0px 79px 0px;
     display: none;
 
     h2 {
@@ -416,7 +429,8 @@ section.search-gif-container {
 /***************************************/
 section.trending-gif {
   background-color: #f3f5f8;
-  padding: 44px 0 82px 22px;
+  // padding: 44px 0 82px 22px;
+  padding: 44px 22px 82px 22px;
 
   body.darkTheme & {
     background-color: #222326;
@@ -452,18 +466,79 @@ section.trending-gif {
   }
 
   .trending-gif-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn-left-slider {
+      display: none;
+      width: 41px;
+      height: 41px;
+      background-image: url(../assets/images/button-slider-left.svg);
+      background-repeat: no-repeat;
+      margin-right: 22px;
+      transition: all 0.3s ease-out;
+      &:hover,
+      &.active {
+        cursor: pointer;
+        background-image: url(../assets/images/button-slider-left-hover.svg);
+      }
+
+      // &:active {
+      //   background-image: url(../assets/images/button-slider-left-hover.svg);
+      // }
+
+      body.darkTheme & {
+        background: url(../assets/images/button-slider-left-md-noct.svg);
+
+        &:hover {
+          cursor: pointer;
+          background-image: url(../assets/images/button-slider-left-hover.svg);
+        }
+      }
+    }
+
+    .btn-right-slider {
+      display: none;
+      width: 41px;
+      height: 41px;
+      background-image: url(../assets/images/Button-Slider-right.svg);
+      background-repeat: no-repeat;
+      margin-left: 22px;
+      transition: all 0.3s ease-out;
+      &:hover,
+      &.active {
+        cursor: pointer;
+        background-image: url(../assets/images/Button-Slider-right-hover.svg);
+      }
+
+      // &:active {
+      //   background-image: url(../assets/images/Button-Slider-right-hover.svg);
+      // }
+
+      body.darkTheme & {
+        background: url('../assets/images/button-slider-right-md-noct.svg');
+
+        &:hover {
+          cursor: pointer;
+          background-image: url(../assets/images/Button-Slider-right-hover.svg);
+        }
+      }
+    }
+
     .gallery-scroll-results {
       display: flex;
       justify-content: flex-start;
-      // overflow-x: scroll;
-      // scroll-snap-type: x mandatory;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      width: 100vw;
 
       .gallery-item {
-        width: 50%;
+        width: 100%;
+        height: 100%;
         position: relative;
-        // &:nth-child(2) {
-        //   margin: 0 20px;
-        // }
+        &:nth-child(2) {
+          margin: 0 20px;
+        }
         cursor: pointer;
         &:hover {
           .img-item-share {
@@ -476,11 +551,13 @@ section.trending-gif {
       }
 
       .img-item-share {
-        // object-fit: cover;
+        object-fit: cover;
         opacity: 1;
         display: block;
-        width: 100%;
-        height: auto;
+        width: 250px;
+        // height: auto;
+        // height: 100%;
+        height: 220px;
         transition: 0.5s ease;
         backface-visibility: hidden;
       }
@@ -492,7 +569,8 @@ section.trending-gif {
         flex-direction: column;
 
         background-color: rgba(87, 46, 229, 0.5);
-        width: 100%;
+        // width: 100%;
+        width: 250px;
         height: 100%;
         opacity: 0;
         position: absolute;
@@ -744,6 +822,45 @@ footer {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  section.trending-gif {
+    .trending-gif-results {
+      .btn-left-slider {
+        display: block;
+      }
+      .btn-right-slider {
+        display: block;
+      }
+
+      .gallery-scroll-results {
+        overflow-x: auto;
+        scroll-snap-type: none;
+        width: calc(100% - 18%);
+
+        .gallery-item {
+          // width: 100%;
+          &:nth-child(2) {
+            margin: 0 20px;
+          }
+        }
+
+        .img-item-share {
+          width: 190px;
+        }
+
+        .gallery-items-share {
+          width: 190px;
+          .share-text {
+            h5 {
+              font-size: 13px;
+            }
+            h3 {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* Medium devices (desktops, 992px and up) */
@@ -935,10 +1052,6 @@ footer {
     }
 
     .trending-gif-results {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
       .btn-left-slider {
         width: 41px;
         height: 41px;
@@ -994,22 +1107,26 @@ footer {
       }
 
       .gallery-scroll-results {
-        justify-content: space-around;
         overflow-x: auto;
         scroll-snap-type: none;
+        width: calc(100% - 10%);
 
         .gallery-item {
-          width: 100%;
+          // width: 100%;
           //   margin-right: 22px;
           &:nth-child(2) {
             margin: 0 20px;
           }
+        }
 
-          .img-item-share {
-            width: 357px;
-            height: 275px;
-            object-fit: cover;
-          }
+        .img-item-share {
+          width: 100%;
+          height: 275px;
+          object-fit: cover;
+        }
+
+        .gallery-items-share {
+          width: 100%;
         }
       }
     }
