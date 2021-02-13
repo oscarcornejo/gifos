@@ -6,6 +6,7 @@ const BASE_PATH = 'https://api.giphy.com/v1/gifs';
 
 // TOGGLE MENU
 const toggleButton = document.getElementById('toggleDarkMode');
+const menuReferencia = document.getElementById('menu-links');
 
 // SEARCH
 const searchInput = document.getElementById('search-input');
@@ -41,16 +42,20 @@ setTheme = setTheme ? setTheme : 'lightTheme';
 
 if (setTheme === 'darkTheme') {
   document.body.classList.toggle('darkTheme');
+  toggleButton.classList.add('active');
 } else {
   document.body.classList.remove('darkTheme');
+  toggleButton.classList.remove('active');
 }
 
 toggleButton.addEventListener('click', () => {
   document.body.classList.toggle('darkTheme');
   if (setTheme === 'lightTheme') {
     setTheme = 'darkTheme';
+    toggleButton.classList.add('active');
   } else {
     setTheme = 'lightTheme';
+    toggleButton.classList.remove('active');
   }
   localStorage.setItem('themeMode', setTheme);
   // localStorage.removeItem('darkTheme');
@@ -60,11 +65,32 @@ toggleButton.addEventListener('click', () => {
 /* FIN SET THEME */
 /***************************************************************************/
 
+setNavigation();
+
+function setNavigation() {
+  // var path = window.location.pathname;
+  // path = path.replace(/\/$/, '');
+  // path = decodeURIComponent(path);
+
+  const currentLocation = location.href;
+  const menuItem = document.querySelectorAll('li a');
+  const menuLength = menuItem.length;
+
+  for (let index = 0; index < menuLength; index++) {
+    // console.log(menuItem[index]);
+    // console.log(menuItem[index].href);
+    if (menuItem[index].href === currentLocation) {
+      menuItem[index].className = 'active';
+    } else if (menuItem[index].href === 'javascript:void(0)') {
+      menuItem[index].className = 'active';
+    }
+  }
+}
+
 /***************************************************************************/
 /* TOGGLE MENU */
 /***************************************************************************/
 function toggleMenu() {
-  const menuReferencia = document.getElementById('menu-links');
   const showClose = document.querySelector('.menu-toggle');
   menuReferencia.classList.toggle('showMenu');
   showClose.classList.toggle('show-close');

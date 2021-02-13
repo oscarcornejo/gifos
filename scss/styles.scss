@@ -918,7 +918,8 @@ footer {
             transition: all 0.3s;
 
             &:hover,
-            &:active {
+            &:active,
+            &.active {
               border-bottom: 2px solid #5ed7c6;
             }
           }
