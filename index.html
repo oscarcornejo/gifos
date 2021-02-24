@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet" />
 
-    <!-- <link rel="stylesheet" href="./css/estilos.css" /> -->
     <link rel="stylesheet" type="text/css" href="./css/styles.min.css" />
   </head>
   <body>
@@ -25,9 +24,14 @@
 
         <!-- Menu Desktop -->
         <ul id="menu-links" class="menu">
-          <li><a id="toggleDarkMode" href="javascript:void(0)">Modo Nocturno</a></li>
+          <li><a id="toggleDarkMode" href="javascript:void(0)"></a></li>
           <li><a href="favoritos.html">Favoritos</a></li>
           <li><a href="mis-gifos.html">Mis GIFOS</a></li>
+          <li>
+            <a href="crear-gif.html">
+              <span id="icon-crear-gif" class="icon-crear-gif-img"></span>
+            </a>
+          </li>
         </ul>
 
         <!-- Menu hamburgesa Mobile -->
@@ -41,7 +45,7 @@
 
         <div class="search-gif-box">
           <div class="search-gif-img">
-            <img src="./assets/images/ilustra_header.svg" alt="gifos" />
+            <img width="100%" height="100%" src="./assets/images/ilustra_header.svg" alt="gifos" />
           </div>
 
           <div class="search-gif-content">
@@ -68,7 +72,7 @@
         <div class="search-results">
           <h2 id="title-result"></h2>
           <div id="search-results-api" class="search-gallery-results"></div>
-          <div class="search-results-view-more">
+          <div id="ver-mas-box-boton" class="search-results-view-more">
             <button id="ver-mas-btn">Ver Más</button>
           </div>
         </div>
@@ -110,6 +114,19 @@
       </div>
     </footer>
 
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div id="contenido"></div>
+        <span class="close"></span>
+      </div>
+    </div>
+
     <script src="./js/app.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/darkMode.js"></script>
+    <script src="./js/trending.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/favoritos.js"></script>
   </body>
 </html>

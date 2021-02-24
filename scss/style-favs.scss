@@ -1,0 +1,218 @@
+/**********************************************************/
+/* SECCTION GIF / PARA PáGINAS FAVORITOS y MIS GIFOS  */
+/**********************************************************/
+.layout-gif-container {
+  padding: 10px 21px 79px 21px;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 46px;
+
+    .icon {
+      max-height: 32px;
+    }
+
+    h2 {
+      color: #572ee5;
+      font-weight: 700;
+      text-align: center;
+      font-size: 25px;
+      line-height: 40px;
+    }
+  }
+}
+
+.results-favs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  .gallery-results-favs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .gallery-favs-item {
+      //   width: 100%;
+      //   height: 100%;
+      position: relative;
+      margin: 0 10px;
+      margin-bottom: 20px;
+
+      cursor: pointer;
+      &:hover {
+        .img-item-share {
+          opacity: 0.3;
+        }
+        .items-share {
+          opacity: 1;
+          display: flex;
+        }
+      }
+    }
+
+    .img-item-share {
+      object-fit: cover;
+      opacity: 1;
+      display: block;
+      width: 165px;
+      height: 200px;
+      transition: 0.5s ease;
+      backface-visibility: hidden;
+    }
+
+    .items-share {
+      display: none;
+      opacity: 0;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+
+      background-color: rgba(87, 46, 229, 0.5);
+      // width: 100%;
+      width: 165px;
+      height: 100%;
+      position: absolute;
+      transition: 0.5s ease;
+      top: 0px;
+      text-align: center;
+
+      .share-icons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 10px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+
+        img {
+          width: 32px;
+          height: 32px;
+          display: block;
+          position: relative;
+          z-index: 2;
+          margin-left: 19px;
+          border-radius: 6px;
+          // opacity: 0.7;
+          transition: all 0.3s ease-out;
+
+          &.icon-remove {
+            background-image: url('../assets/images/icon-trash-normal.svg');
+            background-repeat: no-repeat;
+            height: 32px;
+            width: 32px;
+
+            &:hover {
+              background-image: url('../assets/images/icon-trash-hover.svg');
+            }
+            &.active {
+              background: url('../assets/images/icon-fav-active.svg') no-repeat;
+              background-position: center;
+              background-color: white;
+              border-radius: 6px;
+            }
+          }
+          &.icon-download {
+            background-image: url('../assets/images/icon-download.svg');
+            background-repeat: no-repeat;
+            height: 32px;
+            width: 32px;
+
+            &:hover {
+              background-image: url('../assets/images/icon-download-hover.svg');
+            }
+          }
+          &.icon-maximize {
+            background-image: url('../assets/images/icon-max-normal.svg');
+            background-repeat: no-repeat;
+            height: 32px;
+            width: 32px;
+
+            &:hover {
+              background-image: url('../assets/images/icon-max-hover.svg');
+            }
+          }
+        }
+      }
+
+      .share-text {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+        margin-bottom: 28px;
+
+        h5 {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 15px;
+          color: #ffffff;
+          text-align: left;
+        }
+        h3 {
+          font-family: 'Roboto', sans-serif;
+          font-weight: bold;
+          font-size: 16px;
+          color: #ffffff;
+          text-align: left;
+        }
+      }
+    }
+
+    .sin-result {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .sin-result-icon {
+        margin-bottom: 24px;
+      }
+
+      .sin-result-text {
+        font-family: Montserrat-Bold;
+        font-size: 22px;
+        color: #50e3c2;
+        text-align: center;
+        line-height: 33px;
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  /**********************************************************/
+  /* SECCTION GIF / PARA PáGINAS FAVORITOS y MIS GIFOS  */
+  /**********************************************************/
+  .layout-gif-container {
+    padding: 10px 156px 78px 156px;
+
+    .title {
+      margin-bottom: 36px;
+    }
+
+    .results-favs {
+      .gallery-results-favs {
+        .img-item-share {
+          width: 260px;
+          height: 220px;
+        }
+
+        .items-share {
+          width: 260px;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

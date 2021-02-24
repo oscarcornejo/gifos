@@ -11,26 +11,22 @@ setTheme = setTheme ? setTheme : 'lightTheme';
 
 if (setTheme === 'darkTheme') {
   document.body.classList.toggle('darkTheme');
-  toggleButton.classList.add('active');
+  toggleButton.innerHTML = `Modo Diurno`;
 } else {
   document.body.classList.remove('darkTheme');
-  toggleButton.classList.remove('active');
+  toggleButton.innerHTML = `Modo Nocturno`;
 }
 
 toggleButton.addEventListener('click', () => {
   document.body.classList.toggle('darkTheme');
-
   if (setTheme === 'lightTheme') {
     setTheme = 'darkTheme';
-    toggleButton.classList.add('active');
+    toggleButton.innerHTML = `Modo Diurno`;
   } else {
     setTheme = 'lightTheme';
-    toggleButton.classList.remove('active');
+    toggleButton.innerHTML = `Modo Nocturno`;
   }
-
   localStorage.setItem('themeMode', setTheme);
-
-  // localStorage.removeItem('darkTheme');
 });
 
 // Toggle Menu
