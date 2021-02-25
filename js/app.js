@@ -117,9 +117,6 @@ const getSearchApi = (termino, offset) => {
           const favoriteIcon = searchResultsApi.children[index].childNodes[3].children[0].children[0];
 
           console.log(favoriteIcon);
-          // console.log(favoriteIcon.getAttribute('id'));
-          // const downloadIcon = galleryTrending.children[0].children[1];
-          // const expandIcon = galleryTrending.children[0].children[2];
 
           if (getFavorito(item)) {
             favoriteIcon.classList.add('active');

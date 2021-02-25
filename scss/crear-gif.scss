@@ -248,6 +248,14 @@ header {
       }
     }
 
+    .videoBox {
+      display: none;
+      width: 100%;
+      height: 320px;
+      position: relative;
+      // z-index: 0;
+    }
+
     .title {
       font-family: 'Montserrat', sans-serif;
       font-weight: bold;
@@ -285,7 +293,8 @@ header {
     align-items: center;
 
     .box-content-steps {
-      width: 70%;
+      // width: 70%;
+      width: 100%;
       margin: 0 auto;
       padding-left: 405px;
       padding-right: 250px;
@@ -295,17 +304,46 @@ header {
         align-items: center;
         width: 100%;
         margin: 0 auto;
-        max-width: 120px;
-        .step1 {
+        // max-width: 120px;
+        max-width: 100%;
+        .step-icon-1 {
+          background-image: url('../assets/images/paso-a-paso1.svg');
+          background-repeat: no-repeat;
+          width: 50px;
+          height: 50px;
           cursor: pointer;
+          &.activate {
+            color: white;
+            background-image: url('../assets/images/paso-a-paso-hover1.svg');
+          }
         }
 
-        .step2 {
-          padding: 0 10% 0;
+        .step-icon-2 {
+          background-image: url('../assets/images/paso-a-paso2.svg');
+          background-repeat: no-repeat;
+          width: 50px;
+          height: 50px;
+          // padding: 0 10% 0;
           cursor: pointer;
+          &.activate {
+            color: white;
+            background-image: url('../assets/images/paso-a-paso-hover2.svg');
+          }
         }
-        .step3 {
+        .step-icon-3 {
+          background-image: url('../assets/images/paso-a-paso3.svg');
+          background-repeat: no-repeat;
+          width: 50px;
+          height: 50px;
           cursor: pointer;
+          &.activate {
+            color: white;
+            background-image: url('../assets/images/paso-a-paso-hover3.svg');
+          }
+        }
+
+        #timer {
+          display: none;
         }
       }
     }
@@ -324,7 +362,7 @@ header {
     padding-top: 20.1px;
     border-top: solid 6.9px #572ee5;
 
-    .btnAction {
+    .btn-action {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -362,6 +400,31 @@ header {
   }
 }
 
+.hidden {
+  display: none;
+}
+
+div.div-hover-create {
+  position: absolute;
+  background-color: #572ee5;
+  opacity: 0.8;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    color: white;
+    text-align: center;
+  }
+}
+
+video {
+  width: 100%;
+  height: 100%;
+}
+
 .onStep1 {
   content: url('../assets/images/paso-a-paso-hover1.svg');
 }
@@ -374,18 +437,18 @@ header {
   content: url('../assets/images/paso-a-paso-hover3.svg');
 }
 
-.createGif .videoBox {
-  display: none;
-  height: 320px;
-  width: 420px;
-  position: relative;
-}
+// .createGif .videoBox {
+//   display: none;
+//   height: 320px;
+//   width: 420px;
+//   position: relative;
+// }
 
-.createGif video {
-  display: none;
-  width: 100%;
-  height: 100%;
-}
+// .createGif video {
+//   display: none;
+//   width: 100%;
+//   height: 100%;
+// }
 
 .createGif .gifCountContainer {
   width: 9.1%;

@@ -6,7 +6,6 @@ const favsContainer = document.getElementById('gifs-favs-list');
 
 function getfavoritos() {
   if (favoritos.length) {
-    // console.log(favoritos);
     if (favsContainer !== null) {
       favsContainer.innerHTML = '';
 
@@ -46,12 +45,6 @@ function getfavoritos() {
 }
 
 getfavoritos();
-
-// if (localStorage.getItem('myGifs') == null) {
-//   var myGifsList = [];
-// } else {
-//   var myGifsList = JSON.parse(localStorage.getItem('myGifs'));
-// }
 
 function addFavorito(gifo) {
   const favoriteIcon = document.getElementById(`${gifo.id}`);

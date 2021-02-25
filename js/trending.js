@@ -112,23 +112,17 @@ function handleTouchMove(e) {
   console.log(sizeHorizontal);
 
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    /*most significant*/
     if (xDiff > 15 && sizeHorizontal > 400) {
       /* left swipe */
       console.log('left swipe', xDiff);
       console.log('size horizontal', sizeHorizontal);
       slideToRight();
     } else if (xDiff < -15 && sizeHorizontal === 0) {
+      //   /* right swipe */
       console.log('right swipe', xDiff);
       console.log('size horizontal', sizeHorizontal);
       slideToLeft();
     }
-
-    // else {
-    //   /* right swipe */
-    //   console.log('right swipe', xDiff);
-    //   // slideToLeft();
-    // }
   }
   // else {
   //   if (yDiff > 0) {
@@ -147,11 +141,6 @@ function handleTouchMove(e) {
 }
 
 const slideToLeft = () => {
-  // Math.sign(offsetSelector);
-  // console.log(Math.sign(offsetSelector));
-  // if (offsetSelector > 0)
-  // console.log(offsetSelector);
-
   if (offsetSelector <= 1) {
     leftButton.style.visibility = 'hidden';
   }

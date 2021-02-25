@@ -4,11 +4,9 @@
 const menuHamburgesa = document.getElementById('menu-hamburgesa');
 const showClose = document.querySelector('.menu-toggle');
 const menuReferencia = document.getElementById('menu-links');
+
 const iconCrear = document.getElementById('icon-crear-gif');
-
 iconCrear.setAttribute('class', 'icon-crear-gif-img');
-
-console.log(location.history);
 
 /***************************************************************************/
 /* MENÚ NAVEGACIÓN */
