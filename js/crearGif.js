@@ -23,8 +23,11 @@ async function getStreamAndRecord() {
   boxCam.style.zIndex = '2';
 
   boxCam.innerHTML = `
-  <h2>¿Nos das acceso a tu cámara?</h2>
-  <p>¡Crea tu GIFO en sólo 3 pasos! por el tiempo en el que estés creando el GIFO.</p>`;
+  <div class="box-content-step1"> 
+    <h2>¿Nos das acceso a tu cámara?</h2>
+    <p>¡Crea tu GIFO en sólo 3 pasos! por el tiempo en el que estés creando el GIFO.</p>
+  </div> 
+  `;
 
   createButton.classList.add('hidden');
   step1.classList.add('activate');
@@ -94,8 +97,8 @@ function addHoverVideo(text, iconType = false) {
 
 const getIcon = (type) => {
   switch (type) {
-    case 'spinner':
-      return SPINNER;
+    case 'loading':
+      return LOADING;
 
     case 'success':
       return SUCCESS;
@@ -105,26 +108,8 @@ const getIcon = (type) => {
   }
 };
 
-const SPINNER = `
-<div class="sk-fading-circle">
-  <div class="sk-circle1 sk-circle"></div>
-  <div class="sk-circle2 sk-circle"></div>
-  <div class="sk-circle3 sk-circle"></div>
-  <div class="sk-circle4 sk-circle"></div>
-  <div class="sk-circle5 sk-circle"></div>
-  <div class="sk-circle6 sk-circle"></div>
-  <div class="sk-circle7 sk-circle"></div>
-  <div class="sk-circle8 sk-circle"></div>
-  <div class="sk-circle9 sk-circle"></div>
-  <div class="sk-circle10 sk-circle"></div>
-  <div class="sk-circle11 sk-circle"></div>
-  <div class="sk-circle12 sk-circle"></div>
-</div>
-`;
-
-const SUCCESS = `
-  <div class="icon-success"></div>
-`;
+const LOADING = `<div class="icon-loading"></div>`;
+const SUCCESS = `<div class="icon-success"></div>`;
 
 function removeHoverVideo() {
   boxCam.firstChild = '';
@@ -135,8 +120,10 @@ createButton.addEventListener('click', async () => {
     case 'COMENZAR':
       stream = await getStreamAndRecord();
       break;
-
     case 'GRABAR':
+      hours = '00';
+      minutes = '00';
+      seconds = '00';
       console.log('Grabando Gif', stream);
       timerClock.style.display = 'block';
       recorder = RecordRTC(stream, {
@@ -186,11 +173,11 @@ createButton.addEventListener('click', async () => {
 
     case 'SUBIR GIFO':
       console.log('Subiendo Gif');
-      addHoverVideo('Estamos Subiendo tu Gifo', 'spinner');
+      addHoverVideo('Estamos Subiendo tu Gifo', 'loading');
 
       try {
         const response = await subirGif(formdata);
-        const gifo = await fetchGifId(response.data.id);
+        const gifo = await fetchGifById(response.data.id);
 
         mygifos.push(gifo.data);
         localStorage.setItem('misGifos', JSON.stringify(mygifos));

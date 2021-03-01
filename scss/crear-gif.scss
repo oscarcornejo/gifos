@@ -120,6 +120,15 @@ header {
             body.darkTheme & {
               color: #fff;
             }
+
+            &.active {
+              .icon-crear-gif-img {
+                background-image: url('../assets/images/CTA-crear-gifo-active.svg');
+                background-repeat: no-repeat;
+                width: 54px;
+                height: 54px;
+              }
+            }
           }
 
           &::after {
@@ -160,22 +169,31 @@ header {
 
 /***    ADD GIFS    ***/
 
-.createGif {
+.create-gif {
   padding: 0 156px;
-  .createTop {
+  .create-top {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
     .box-img {
-      width: 20%;
+      width: 25%;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      .cameraImg {
+      .camera-img {
         //   padding-left: 10.8%;
         width: 45%;
+        background-image: url('../assets/images/camara.svg');
+        background-repeat: no-repeat;
+        display: block;
+        width: 123px;
+        height: 162px;
+
+        body.darkTheme & {
+          background-image: url('../assets/images/camara-modo-noc.svg');
+        }
       }
 
       .light {
@@ -183,7 +201,7 @@ header {
       }
     }
 
-    .bigBox {
+    .big-box {
       border: solid 1px #572ee5;
       width: 60%;
       height: 390px;
@@ -191,103 +209,132 @@ header {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-    }
 
-    .smallBox {
-      border: solid 1px #50e3c2;
-      width: 94.19%;
-      height: 352px;
+      .small-box {
+        border: solid 1px #50e3c2;
+        width: 94.19%;
+        height: 352px;
 
-      padding: 1em;
-      //   border: 0.25em solid;
-      position: relative;
+        padding: 1em;
+        //   border: 0.25em solid;
+        position: relative;
 
-      &::before,
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        background: #fff;
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          background: #fff;
 
-        body.darkTheme & {
-          background: #37383c;
+          body.darkTheme & {
+            background: #37383c;
+          }
         }
-      }
 
-      &::before {
-        top: -0.3em; // let it overlap a bit to prevent thin line which could appear during scaling in some browsers etc.
-        bottom: -0.3em;
-        left: 1em;
-        right: 1em;
-      }
+        &::before {
+          top: -0.3em; // let it overlap a bit to prevent thin line which could appear during scaling in some browsers etc.
+          bottom: -0.3em;
+          left: 1em;
+          right: 1em;
+        }
 
-      &::after {
-        left: -0.3em;
-        right: -0.3em;
-        top: 1em;
-        bottom: 1em;
-      }
-    }
+        &::after {
+          left: -0.3em;
+          right: -0.3em;
+          top: 1em;
+          bottom: 1em;
+        }
 
-    .borderlessBox {
-      border: solid 1px white;
-      width: 100%;
-      height: 100%;
-      margin: 0px;
-      border-radius: 27px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+        .border-less-box {
+          border: solid 1px white;
+          width: 100%;
+          height: 100%;
+          margin: 0px;
+          border-radius: 27px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
 
-      position: relative;
-      z-index: 1;
+          position: relative;
+          z-index: 1;
 
-      body.darkTheme & {
-        border: solid 1px #37383c;
-      }
-    }
+          body.darkTheme & {
+            border: solid 1px #37383c;
+          }
 
-    .videoBox {
-      display: none;
-      width: 100%;
-      height: 320px;
-      position: relative;
-      // z-index: 0;
-    }
+          .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            color: #572ee5;
+            text-align: center;
+            line-height: 35px;
+            margin-bottom: 3px;
 
-    .title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: bold;
-      font-size: 25px;
-      color: #572ee5;
-      text-align: center;
-      line-height: 35px;
-      margin-bottom: 3px;
+            body.darkTheme & {
+              color: #fff;
+            }
 
-      body.darkTheme & {
-        color: #fff;
-      }
+            .word {
+              color: #50e3c2;
+            }
+          }
 
-      .word {
-        color: #50e3c2;
-      }
-    }
+          .subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #000000;
+            text-align: center;
+            line-height: 29px;
 
-    .subtitle {
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      color: #000000;
-      text-align: center;
-      line-height: 29px;
+            body.darkTheme & {
+              color: #fff;
+            }
+          }
+        }
 
-      body.darkTheme & {
-        color: #fff;
+        .videoBox {
+          display: none;
+          width: 100%;
+          height: 320px;
+          position: relative;
+          // z-index: 0;
+          body.darkTheme & {
+            color: white;
+          }
+
+          .div-hover-create {
+            position: absolute;
+            background-color: #572ee5;
+            opacity: 0.8;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 606px;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column-reverse;
+            align-items: center;
+            height: 100%;
+
+            h2 {
+              color: white;
+              text-align: center;
+              margin-bottom: 10px;
+              margin-bottom: 10px;
+            }
+          }
+        }
       }
     }
   }
 
-  .createBottom {
+  .create-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -306,54 +353,108 @@ header {
         margin: 0 auto;
         // max-width: 120px;
         max-width: 100%;
+        padding: 15px 0;
         .step-icon-1 {
           background-image: url('../assets/images/paso-a-paso1.svg');
           background-repeat: no-repeat;
-          width: 50px;
-          height: 50px;
+          width: 33px;
+          height: 32px;
           cursor: pointer;
           &.activate {
             color: white;
             background-image: url('../assets/images/paso-a-paso-hover1.svg');
+          }
+
+          body.darkTheme & {
+            background-image: url('../assets/images/paso-a-paso-mod-noc1.svg');
+
+            &:hover {
+              background-image: url('../assets/images/paso-a-paso-hover-mod-noc1.svg');
+            }
+
+            &.activate {
+              color: white;
+              background-image: url('../assets/images/paso-a-paso-hover-mod-noc1.svg');
+            }
           }
         }
 
         .step-icon-2 {
           background-image: url('../assets/images/paso-a-paso2.svg');
           background-repeat: no-repeat;
-          width: 50px;
-          height: 50px;
+          width: 33px;
+          height: 32px;
           // padding: 0 10% 0;
           cursor: pointer;
           &.activate {
             color: white;
             background-image: url('../assets/images/paso-a-paso-hover2.svg');
           }
+
+          body.darkTheme & {
+            background-image: url('../assets/images/paso-a-paso-mod-noc2.svg');
+
+            &:hover {
+              background-image: url('../assets/images/paso-a-paso-hover-mod-noc2.svg');
+            }
+
+            &.activate {
+              color: white;
+              background-image: url('../assets/images/paso-a-paso-hover-mod-noc2.svg');
+            }
+          }
         }
         .step-icon-3 {
           background-image: url('../assets/images/paso-a-paso3.svg');
           background-repeat: no-repeat;
-          width: 50px;
-          height: 50px;
+          width: 33px;
+          height: 32px;
           cursor: pointer;
           &.activate {
             color: white;
             background-image: url('../assets/images/paso-a-paso-hover3.svg');
           }
+
+          body.darkTheme & {
+            background-image: url('../assets/images/paso-a-paso-mod-noc3.svg');
+
+            &:hover {
+              background-image: url('../assets/images/paso-a-paso-hover-mod-noc3.svg');
+            }
+
+            &.activate {
+              color: white;
+              background-image: url('../assets/images/paso-a-paso-hover-mod-noc3.svg');
+            }
+          }
         }
 
         #timer {
           display: none;
+          cursor: pointer;
+
+          body.darkTheme & {
+            color: #fff;
+          }
         }
       }
     }
 
-    .peliculaImg {
+    .pelicula-img {
       margin: 0 11.6% 0 auto;
+      background-image: url('../assets/images/pelicula.svg');
+      background-repeat: no-repeat;
+      width: 142px;
+      height: 88px;
+      display: block;
+
+      body.darkTheme & {
+        background-image: url('../assets/images/pelicula-modo-noc.svg');
+      }
     }
   }
 
-  .buttonContainerMyGifs {
+  .btn-box-my-gifs {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -400,86 +501,31 @@ header {
   }
 }
 
-.hidden {
-  display: none;
-}
-
-div.div-hover-create {
-  position: absolute;
-  background-color: #572ee5;
-  opacity: 0.8;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  h2 {
-    color: white;
-    text-align: center;
-  }
-}
-
 video {
   width: 100%;
   height: 100%;
 }
 
-.onStep1 {
-  content: url('../assets/images/paso-a-paso-hover1.svg');
+.hidden {
+  display: none;
 }
 
-.onStep2 {
-  content: url('../assets/images/paso-a-paso-hover2.svg');
+.icon-success {
+  background-image: url('../assets/images/ok.svg');
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 13px;
+  display: block;
+  margin: 0 auto;
 }
 
-.onStep3 {
-  content: url('../assets/images/paso-a-paso-hover3.svg');
-}
-
-// .createGif .videoBox {
-//   display: none;
-//   height: 320px;
-//   width: 420px;
-//   position: relative;
-// }
-
-// .createGif video {
-//   display: none;
-//   width: 100%;
-//   height: 100%;
-// }
-
-.createGif .gifCountContainer {
-  width: 9.1%;
-  margin: 0 0 0 9.6%;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-  color: #572ee5;
-  letter-spacing: 0;
-  text-align: center;
-  line-height: 22px;
-}
-
-.createGif .checkScreen {
-  left: 0;
-  top: 0;
-  padding: 0;
-  background: rgba(87, 46, 229, 0.6);
-  z-index: +1;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-content: flex-start;
-}
-
-.createGif .checkIcon {
-  margin: 127px 0 9px;
-  flex-basis: 100%;
+.icon-loading {
+  background-image: url('../assets/images/loader.svg');
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: 0 auto;
 }
 
 .icon-crear-gif-img {
@@ -587,9 +633,8 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .createGif .spinIcon {
-    animation: App-logo-spin infinite 20s linear;
-    margin: 127px auto 9px auto;
+  .icon-loading {
+    animation: App-logo-spin infinite 3s linear;
   }
 }
 
@@ -602,7 +647,7 @@ footer {
   }
 }
 
-.createGif .checkText {
+.create-gif .checkText {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 15px;
@@ -611,25 +656,25 @@ footer {
   flex-basis: 100%;
 }
 
-.createGif .checkDownload {
+.create-gif .checkDownload {
   display: none;
   padding: 11px 0 0 0;
   height: 32px;
   justify-content: flex-end;
 }
 
-.createGif .checkLink {
+.create-gif .checkLink {
   display: none;
   padding: 11px 0 0 0;
   flex-basis: 12%;
   height: 32px;
 }
 
-.createGif .checkDownload:hover {
+.create-gif .checkDownload:hover {
   content: url('..assets/images/icon-download-hover.svg');
 }
 
-.createGif .checkLink:hover {
+.create-gif .checkLink:hover {
   content: url('..assets/images/icon-link-hover.svg');
 }
 
@@ -695,11 +740,11 @@ footer {
               border-bottom: 2px solid transparent;
               transition: all 0.3s;
 
-              &:hover,
-              &:active,
-              &.active {
-                border-bottom: 2px solid #5ed7c6;
-              }
+              // &:hover,
+              // &:active,
+              // &.active {
+              //   border-bottom: 2px solid #5ed7c6;
+              // }
             }
           }
         }

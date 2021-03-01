@@ -5,8 +5,8 @@ favoritos = favoritos ? JSON.parse(favoritos) : [];
 const favsContainer = document.getElementById('gifs-favs-list');
 
 function getfavoritos() {
-  if (favoritos.length) {
-    if (favsContainer !== null) {
+  if (favoritos.length > 0) {
+    if (favsContainer) {
       favsContainer.innerHTML = '';
 
       favoritos.forEach((item) => {
@@ -35,12 +35,16 @@ function getfavoritos() {
       });
     }
   } else {
-    favsContainer.innerHTML = `
-        <div class="sin-result">
-            <img class="sin-result-icon" src="../assets/images/icon-fav-sin-contenido.svg" alt="busqueda-sin-resultado"/>
-            <p class="sin-result-text">"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</p>
-        </div>
-    `;
+    if (favsContainer) {
+      favsContainer.innerHTML = `
+      <div class="sin-result">
+          <img class="sin-result-icon" src="../assets/images/icon-fav-sin-contenido.svg" alt="busqueda-sin-resultado"/>
+          <p class="sin-result-text">"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</p>
+      </div>
+  `;
+    } else {
+      return null;
+    }
   }
 }
 
@@ -55,12 +59,22 @@ function addFavorito(gifo) {
     favoriteIcon.classList.add('active');
   }
 
-  let imgID = 'image-' + gifo.id;
-  let imSRC = document.getElementById(imgID).src;
-  let title = document.getElementById(imgID).alt;
-  let user = document.getElementById(imgID).dataset.user;
+  let gifInfo = {};
+  const newGif = favoritos.filter((item) => item.id === gifo.id);
 
-  const gifInfo = { id: gifo.id, img: imSRC, title, user };
+  if (newGif.length > 0) {
+    let imSRC = newGif[0].images.original.url;
+    let title = newGif[0].title;
+    let user = newGif[0].username;
+
+    gifInfo = { id: newGif[0].id, img: imSRC, title, user };
+  } else {
+    let imgID = 'image-' + gifo.id;
+    let imSRC = document.getElementById(imgID).src;
+    let title = document.getElementById(imgID).alt;
+    let user = document.getElementById(imgID).dataset.user;
+    gifInfo = { id: gifo.id, img: imSRC, title, user };
+  }
 
   const favoriteIndex = favoritos.findIndex((fav) => fav.id === gifo.id);
   if (favoriteIndex === -1) {

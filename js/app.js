@@ -27,6 +27,9 @@ const suggestionList = document.getElementById('list-suggestions');
 const verMasBtn = document.getElementById('ver-mas-btn');
 const gifsActuales = sessionStorage.removeItem('gifs');
 
+// Trendins Texts
+const trendings = document.getElementById('trendings-term');
+
 /***************************************************************************/
 /* SEARCH */
 /***************************************************************************/
@@ -57,6 +60,31 @@ searchBtn.addEventListener('click', async () => {
     getSearchApi(terminoBusqueda, pageOffset);
   }
 });
+
+/***************************************************************************/
+/* TRENDINGS TEXTS */
+/***************************************************************************/
+
+const getTrendings = () => {
+  const urlApi = `https://api.giphy.com/v1/trending/searches?api_key=${API_KEY}&limit=6`;
+
+  fetch(urlApi)
+    .then((response) => response.json())
+    .then((data) => {
+      const result = data.data;
+      if (result.length > 0) {
+        result.forEach((item, index) => {
+          trendings.innerHTML += `<p>${item}, ${' '}</p> `;
+        });
+      } else {
+        trendings.innerHTML = '';
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+getTrendings();
 
 /***************************************************************************/
 /* VER MÁS RESULTADOS */
@@ -115,8 +143,7 @@ const getSearchApi = (termino, offset) => {
           `;
 
           const favoriteIcon = searchResultsApi.children[index].childNodes[3].children[0].children[0];
-
-          console.log(favoriteIcon);
+          // console.log(favoriteIcon);
 
           if (getFavorito(item)) {
             favoriteIcon.classList.add('active');
@@ -130,7 +157,12 @@ const getSearchApi = (termino, offset) => {
         boxResultSearch.style.display = 'block';
         verMasBoxBoton.style.display = 'none';
         textBottomSearchInput.style.display = 'block';
-        searchResultsApi.innerHTML = '<p>Sin Resultados</p>';
+        searchResultsApi.innerHTML = `
+          <div class="sin-result">
+            <img class="sin-result-icon" src="../assets/images/icon-busqueda-sin-resultado.svg" alt="busqueda-sin-resultado"/>
+            <p class="sin-result-text">Intenta con otra búsqueda.</p>
+          </div>
+       `;
       }
     })
     .catch((error) => {
@@ -221,7 +253,7 @@ const clearSearch = () => {
   searchResultsApi.innerHTML = '';
   titleResult.innerHTML = '';
   verMasBoxBoton.style.display = 'none';
-  // boxResultSearch.style.display = 'none';
+  boxResultSearch.style.display = 'none';
   openSuggestions.classList.remove('open-suggestions');
   openSuggestionsHr.style.display = 'none';
   textBottomSearchInput.style.display = 'block';

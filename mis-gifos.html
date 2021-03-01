@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet" />
 
-    <!-- <link rel="stylesheet" href="./css/estilos.css" /> -->
     <link rel="stylesheet" type="text/css" href="./css/styles.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style-mis-gifs.min.css" />
   </head>
   <body>
     <header>
@@ -28,7 +28,7 @@
           <li><a id="toggleDarkMode" href="javascript:void(0);">Modo Nocturno</a></li>
           <li><a href="favoritos.html">Favoritos</a></li>
           <li><a href="mis-gifos.html">Mis GIFOS</a></li>
-          <li>
+          <li class="crear-gifo">
             <a href="crear-gif.html">
               <span id="icon-crear-gif" class="icon-crear-gif-img"></span>
             </a>
@@ -36,7 +36,7 @@
         </ul>
 
         <!-- Menu hamburgesa Mobile -->
-        <div class="menu-toggle" onclick="toggleMenu()"></div>
+        <div id="menu-hamburgesa" class="menu-toggle"></div>
       </nav>
     </header>
 
@@ -49,49 +49,8 @@
           <h2>Mis GIFOS</h2>
         </div>
 
-        <div class="layout-gif-gallery">
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/5a3T9ysziVB1gOzEfc/source.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/FVCM2k7kaSD1gDYMDg/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/l44Qy0U7ptmzriOyY/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/Zsc4dATQgcBmU/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/Zsc4dATQgcBmU/source.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/xreOZC8DSOKfvodM5b/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/I7sXL3kc7Qkog/source.gif" alt="Gifos" />
-          </div>
-
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/Kc2lui9u16pynAh5Ik/giphy.gif" alt="Gifos" />
-          </div>
-          <div class="gif-item">
-            <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="Gifos" />
-          </div>
-        </div>
-
-        <div class="layout-gif-view-more">
-          <button>Ver Más</button>
+        <div class="results-favs">
+          <div id="mis-gifs-list" class="gallery-results-favs"></div>
         </div>
       </section>
 
@@ -103,24 +62,9 @@
         </div>
 
         <div class="trending-gif-results">
-          <!-- <img id="buttonLeft" class="btn-left-slider" alt="trending-gif" src="./assets/images/button-slider-left.svg" /> -->
-          <span class="btn-left-slider"></span>
-          <div class="gallery-scroll-results">
-            <div class="gallery-item">
-              <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
-            </div>
-
-            <div class="gallery-item">
-              <img src="https://media.giphy.com/media/9qZWzya7EkehG/giphy.gif" alt="" />
-            </div>
-
-            <div class="gallery-item">
-              <img src="https://media.giphy.com/media/I1FDiIRWAT35S/giphy.gif" alt="" />
-            </div>
-          </div>
-
-          <!-- <img id="buttonRight" class="btn-right-slider active" alt="trending-gif" src="./assets/images/Button-Slider-right.svg" /> -->
-          <span class="btn-right-slider"></span>
+          <span id="buttonLeft" class="btn-left-slider"></span>
+          <div id="gallery-trending" class="gallery-scroll-results"></div>
+          <span id="buttonRight" class="btn-right-slider"></span>
         </div>
       </section>
     </main>
@@ -146,6 +90,19 @@
       </div>
     </footer>
 
-    <script src="./js/sections.js"></script>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div id="contenido"></div>
+        <span class="close"></span>
+      </div>
+    </div>
+
+    <script src="./js/menu.js"></script>
+    <script src="./js/darkMode.js"></script>
+    <script src="./js/trending.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/misGifos.js"></script>
+    <script src="./js/favoritos.js"></script>
   </body>
 </html>

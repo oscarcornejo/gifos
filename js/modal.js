@@ -79,7 +79,7 @@ function openModalGifo(type, id, img, title, user) {
 
           <div>
             <div class="box-share-icons">
-                <img class="icon-favorite" alt="" />
+                <img id="${id}" class="icon-favorite" alt="" onclick='addFavorito(this)' />
                 <img id="downloadGif" class="icon-download" alt="" />
             </div>
           </div>
@@ -139,7 +139,7 @@ function getGifLeft() {
 
         <div>
           <div class="box-share-icons">
-              <img class="icon-favorite" alt="" />
+              <img class="icon-favorite" alt="" onclick='addFavorito(this)' />
               <img id="downloadGif" class="icon-download" alt="" />
           </div>
         </div>
@@ -178,7 +178,7 @@ function getGifLeft() {
 
           <div>
             <div class="box-share-icons">
-                <img class="icon-favorite" alt="" />
+                <img class="icon-favorite" alt="" onclick='addFavorito(this)' />
                 <img id="downloadGif" class="icon-download" alt="" />
             </div>
           </div>
@@ -224,7 +224,7 @@ function getGifRight() {
 
     const title = newGif.title;
 
-    console.log(newGif);
+    // console.log(newGif);
 
     contenido.innerHTML = `
     <div class="wrapper-content">
@@ -242,7 +242,7 @@ function getGifRight() {
 
         <div>
           <div class="box-share-icons">
-              <img class="icon-favorite" alt="" />
+              <img class="icon-favorite" alt="" onclick='addFavorito(this)' />
               <img id="downloadGif" class="icon-download" alt="" />
           </div>
         </div>
@@ -281,7 +281,7 @@ function getGifRight() {
 
         <div>
           <div class="box-share-icons">
-              <img class="icon-favorite" alt="" />
+              <img class="icon-favorite" alt="" onclick='addFavorito(this)' />
               <img id="downloadGif" class="icon-download" alt="" />
           </div>
         </div>

@@ -92,6 +92,10 @@ header {
         flex-direction: column;
         transition: all 0.3s;
 
+        .crear-gifo {
+          display: none;
+        }
+
         body.darkTheme & {
           background: rgba(0, 0, 0, 1);
         }
@@ -347,7 +351,7 @@ section.search-gif-container {
       display: flex;
       justify-content: center;
       flex-direction: column;
-      width: 236px;
+      width: 245px;
 
       h2 {
         font-size: 16px;
@@ -361,15 +365,20 @@ section.search-gif-container {
         }
       }
 
-      p {
-        font-size: 14px;
-        font-weight: 400;
-        color: #572ee5;
-        text-align: center;
-        line-height: 25px;
+      .trendings {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        p {
+          font-size: 14px;
+          font-weight: 400;
+          color: #572ee5;
+          text-align: center;
+          line-height: 25px;
 
-        body.darkTheme & {
-          color: #fff;
+          body.darkTheme & {
+            color: #fff;
+          }
         }
       }
     }
@@ -407,7 +416,7 @@ section.search-gif-container {
 
     .search-gallery-results {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
       margin-bottom: 53px;
 
@@ -542,6 +551,27 @@ section.search-gif-container {
           .overlay {
             opacity: 1;
           }
+        }
+      }
+
+      .sin-result {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 150px;
+          height: 150px;
+          margin-bottom: 29px;
+        }
+
+        p {
+          font-weight: bold;
+          font-size: 22px;
+          color: #50e3c2;
+          text-align: center;
+          line-height: 25px;
         }
       }
     }
@@ -1147,6 +1177,24 @@ footer {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  section.search-gif-container {
+    .search-gif-box {
+      width: 55%;
+      margin: 0 auto;
+      .search-gif-content {
+        margin-bottom: 73px;
+        width: 70%;
+        .search-gif-input {
+          width: 100%;
+        }
+      }
+
+      .search-gif-text {
+        width: 75%;
+      }
+    }
+  }
+
   section.trending-gif {
     .trending-gif-results {
       .btn-left-slider {
@@ -1227,6 +1275,10 @@ footer {
 
           body.darkTheme & {
             background: transparent;
+          }
+
+          .crear-gifo {
+            display: block;
           }
 
           li {

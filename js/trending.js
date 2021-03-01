@@ -52,7 +52,7 @@ const getApiTrending = (offset) => {
             `;
 
           const favoriteIcon = galleryTrending.children[index].childNodes[3].children[0].children[0];
-          console.log(favoriteIcon);
+          // console.log(favoriteIcon);
 
           if (getFavorito(item)) {
             favoriteIcon.classList.add('active');
@@ -109,18 +109,18 @@ function handleTouchMove(e) {
   var xDiff = xDown - xUp;
   var yDiff = yDown - yUp;
 
-  console.log(sizeHorizontal);
+  // console.log(sizeHorizontal);
 
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
     if (xDiff > 15 && sizeHorizontal > 400) {
       /* left swipe */
-      console.log('left swipe', xDiff);
-      console.log('size horizontal', sizeHorizontal);
+      // console.log('left swipe', xDiff);
+      // console.log('size horizontal', sizeHorizontal);
       slideToRight();
     } else if (xDiff < -15 && sizeHorizontal === 0) {
       //   /* right swipe */
-      console.log('right swipe', xDiff);
-      console.log('size horizontal', sizeHorizontal);
+      // console.log('right swipe', xDiff);
+      // console.log('size horizontal', sizeHorizontal);
       slideToLeft();
     }
   }
